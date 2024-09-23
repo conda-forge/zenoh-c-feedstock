@@ -1,5 +1,5 @@
 {% set name = "libzenohc" %}
-{% set version = "0.11.0" %}
+{% set version = "1.0.0.9" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/eclipse-zenoh/zenoh-c/archive/refs/tags/{{ version }}.tar.gz
-    sha256: a0ed1c19eca3c0db5b4c140c2a9cd84b471f1a427599ddf12ee1b4005d860e71
+    sha256: 5c77d3aeb917501ac94895e23c608f686f12ba64ab35352bca066c44e54e7aa5
     patches:
       - 469.patch
       - 470.patch
@@ -43,10 +43,10 @@ test:
 about:
   home: https://github.com/eclipse-zenoh/zenoh-c
   license: Apache-2.0 OR EPL-2.0
-  license_file: 
+  license_file:
     - LICENSE
     - THIRDPARTY.yml
-  summary:  C API for Zenoh
+  summary: C API for Zenoh
 
 extra:
   # Stick to the repo name for the feedstock name
