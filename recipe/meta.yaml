@@ -6,8 +6,9 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://github.com/eclipse-zenoh/zenoh-c/archive/refs/tags/{{ version }}.tar.gz
-    sha256: 316309b850338fd7588d2a439ea21500817903338f6bb55fcbb23aa2c2901344
+  # Workaround for faulty 1.0.0 tag, change once we tag has been fixed
+  - url: https://github.com/eclipse-zenoh/zenoh-c/archive/bca57bb6e5a55421cc6ef20ddae5fd3cbb58c30c.tar.gz
+    sha256: 365725dce66a577ad30e1308b8a0e25f7da36fc275f752d62032bb970dd13752
     patches:
       - 469.patch
 
