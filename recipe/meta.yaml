@@ -10,7 +10,6 @@ source:
     sha256: 316309b850338fd7588d2a439ea21500817903338f6bb55fcbb23aa2c2901344
     patches:
       - 469.patch
-      - link_threads_in_tests.patch
 
 build:
   number: 0
