@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/eclipse-zenoh/zenoh-c/archive/refs/tags/{{ version }}.tar.gz
-    sha256: 316309b850338fd7588d2a439ea21500817903338f6bb55fcbb23aa2c2901344
+    sha256: bf405e8ba716632166f088408e24d3c24c9c0dfd9643b672e7027b78f99e353f
     patches:
       - 469.patch
 
