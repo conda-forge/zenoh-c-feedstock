@@ -19,6 +19,12 @@ cmake -GNinja ${CMAKE_ARGS} \
 cmake --build .
 cmake --install .
 
+# Workaround to fix rpath of installed library on macos
+# See https://github.com/conda-forge/zenoh-c-feedstock/issues/18
+if [[ "${target_platform}" == osx-* ]]; then
+    install_name_tool -id @rpath/libzenohc.dylib $PREFIX/lib/libzenohc.dylib
+fi
+
 cargo-bundle-licenses --format yaml --output ${SRC_DIR}/THIRDPARTY.yml
 
 cmake --build . --target tests --config Release

@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.16)
+project(zenohc_examples LANGUAGES C)
+find_package(zenohc REQUIRED)
+
+file(GLOB files "${CMAKE_CURRENT_SOURCE_DIR}/*.c")
+
+# Unsupported examples
+# This examples are unsupported due to the use of unstable APIs
+# If the API became stable, enable them again
+set(zenoh_examples_unsupported "z_get_liveliness;z_liveliness;z_get_shm;z_ping_shm;z_pub_attachment;z_pub_cache;z_pub_shm;z_pub_shm_thr;z_query_sub;z_queryable_shm;z_sub_liveliness")
+
+
+foreach(file ${files})
+    get_filename_component(target ${file} NAME_WE)
+    if(NOT ${target} IN_LIST  zenoh_examples_unsupported)
+        add_executable(${target} ${file})
+        target_link_libraries(${target} PRIVATE zenohc::lib)
+    endif()
+endforeach()
