@@ -19,6 +19,10 @@ if %errorlevel% NEQ 0 exit /b %errorlevel%
 cargo-bundle-licenses --format yaml --output %SRC_DIR%\THIRDPARTY.yml
 if %errorlevel% NEQ 0 exit /b %errorlevel%
 
+:: Build examples
+cmake --build . --target examples --config Release
+if %errorlevel% NEQ 0 exit /b %errorlevel%
+
 cmake --build . --target tests --config Release
 if %errorlevel% NEQ 0 exit /b %errorlevel%
 
