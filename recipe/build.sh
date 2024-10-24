@@ -5,6 +5,9 @@ if [[ "${target_platform}" == linux-* ]] ; then
     export LDFLAGS="-lrt ${LDFLAGS}"
 fi
 
+# Print env as debug
+env
+
 mkdir build && cd build
 
 cmake -GNinja ${CMAKE_ARGS} \
