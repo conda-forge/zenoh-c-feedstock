@@ -1,6 +1,7 @@
 setlocal EnableDelayedExpansion
 
-copy /Y examples_CMakeLists.txt .\examples
+del .\examples\CMakeLists.txt
+copy examples_CMakeLists.txt .\examples\CMakeLists.txt
 cd examples
 
 :: Compile example that links zenoh
