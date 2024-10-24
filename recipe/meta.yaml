@@ -30,6 +30,11 @@ requirements:
   host:
     - zenoh-rust-abi {{ version }}.*
 test:
+  files:
+    - examples_CMakeLists.txt
+  source_files:
+    - examples
+
   commands:
     - test -f ${PREFIX}/lib/libzenohc${SHLIB_EXT}  # [unix]
     - if not exist %PREFIX%\\Library\\lib\\zenohc.dll.lib exit 1  # [win]
