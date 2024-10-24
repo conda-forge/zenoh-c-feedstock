@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
-cp  ./examples_CMakeLists.txt ./examples/
+rm -rf ./examples/CMakeLists.txt
+cp  ./examples_CMakeLists.txt ./examples/CMakeLists.txt
 cd examples
 
 # Compile example that links zeno
