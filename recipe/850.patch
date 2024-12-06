@@ -1,0 +1,29 @@
+From f678f2d2ac402db4fcfda53848fe37d0121a2cbf Mon Sep 17 00:00:00 2001
+From: Silvio Traversaro <silvio@traversaro.it>
+Date: Fri, 6 Dec 2024 19:27:44 +0100
+Subject: [PATCH] Fix calling find_package(zenohc) twice in CMake
+
+---
+ install/PackageConfig.cmake.in | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/install/PackageConfig.cmake.in b/install/PackageConfig.cmake.in
+index 56524a8d9..670f5385a 100644
+--- a/install/PackageConfig.cmake.in
++++ b/install/PackageConfig.cmake.in
+@@ -41,8 +41,11 @@ if(NOT TARGET __zenohc_static)
+     )
+ endif()
+ 
+-if(@BUILD_SHARED_LIBS@)
+-    add_library(zenohc::lib ALIAS __zenohc_shared)
+-else()
+-    add_library(zenohc::lib ALIAS __zenohc_static)
++if(NOT TARGET zenohc::lib)
++    if(@BUILD_SHARED_LIBS@)
++        add_library(zenohc::lib ALIAS __zenohc_shared)
++    else()
++        add_library(zenohc::lib ALIAS __zenohc_static)
++    endif()
+ endif()
++
