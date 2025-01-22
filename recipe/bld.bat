@@ -7,6 +7,8 @@ cmake -GNinja %CMAKE_ARGS% ^
       -DZENOHC_INSTALL_STATIC_LIBRARY:BOOL=OFF ^
       -DZENOHC_LIB_STATIC:BOOL=OFF ^
       -DZENOHC_CARGO_FLAGS:STRING="--locked" ^
+      -DZENOHC_BUILD_WITH_SHARED_MEMORY:BOOL=ON ^
+      -DZENOHC_BUILD_WITH_UNSTABLE_API:BOOL=ON ^
       %SRC_DIR%
 if %errorlevel% NEQ 0 exit /b %errorlevel%
 
