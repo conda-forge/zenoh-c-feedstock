@@ -1,4 +1,4 @@
 # Keep in sync with https://github.com/eclipse-zenoh/zenoh-c/blob/main/rust-toolchain.toml
 # of the corresponding release
 rust_compiler_version:
-    - '1.75.0'
+    - '1.85.0'
