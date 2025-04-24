@@ -40,6 +40,9 @@ test:
     - test -f ${PREFIX}/lib/libzenohc${SHLIB_EXT}  # [unix]
     - if not exist %PREFIX%\\Library\\lib\\zenohc.dll.lib exit 1  # [win]
     - if not exist %PREFIX%\\Library\\bin\\zenohc.dll exit 1  # [win]
+    # Ensure that static libraries are not packaged
+    - test ! -f ${PREFIX}/lib/libzenohc.a  # [unix]
+    - if exist %PREFIX%\\Library\\bin\\zenohc.lib exit 1  # [win]
     - cmake-package-check zenohc --targets zenohc::shared zenohc::lib
   requires:
     - cmake-package-check
