@@ -10,6 +10,7 @@ source:
     sha256: 6dfbbe7aff210f8e84cd21a3795ec19b7fa0498622001c2f3407a226e3cdf3d8
     patches:
       - 469.patch
+      - disable_static_library_install.patch
 
 build:
   number: 0
