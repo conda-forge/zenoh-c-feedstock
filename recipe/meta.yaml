@@ -9,7 +9,6 @@ source:
   - url: https://github.com/eclipse-zenoh/zenoh-c/archive/refs/tags/{{ version }}.tar.gz
     sha256: 686267200cbedcc9816c61d53dfae4a7a926a68fa6f9fa533cf1cf2aed5ef663
     patches:
-      - 469.patch
       - disable_static_library_install_part1.patch
       - disable_static_library_install_part2.patch
 
