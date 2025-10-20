@@ -1,5 +1,5 @@
 {% set name = "libzenohc" %}
-{% set version = "1.6.1" %}
+{% set version = "1.6.2" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/eclipse-zenoh/zenoh-c/archive/refs/tags/{{ version }}.tar.gz
-    sha256: e7e97acef289176f0f589eedac9f31e890dc5bdbd51cb7d57df19488d173ceb2
+    sha256: 6513c11233e4dc1d9bc015b49b5399e32552459aa447ede2864866e99197b68a
     patches:
       - disable_static_library_install_part1.patch
       - disable_static_library_install_part2.patch
