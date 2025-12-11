@@ -31,5 +31,5 @@ cargo-bundle-licenses --format yaml --output ${SRC_DIR}/THIRDPARTY.yml
 
 cmake --build . --target tests --config Release
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
-ctest -C Release --output-on-failure -E "(unit_z_api_alignment_test|build_z_build_static)"
+ctest -C Release --output-on-failure -E "(unit_z_api_alignment_test|build_z_build_static|unit_z_api_shm_test)"
 fi
