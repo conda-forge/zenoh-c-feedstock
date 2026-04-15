@@ -7,4 +7,6 @@ github:
 provider:
   linux_aarch64: default
   osx_arm64: default
+build_platform:
+  osx_arm64: osx_arm64
 test: native_and_emulated
