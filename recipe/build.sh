@@ -7,12 +7,14 @@ fi
 
 mkdir build && cd build
 
+# -DZENOHC_CARGO_FLAGS:STRING="--locked" is omitted as a workaround for
+# https://github.com/eclipse-zenoh/zenoh-c/issues/1270
+# please add it back in zenoh-c > 1.9.0
 cmake -GNinja ${CMAKE_ARGS} \
       -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_SHARED_LIBS:BOOL=ON \
       -DZENOHC_INSTALL_STATIC_LIBRARY:BOOL=OFF \
       -DZENOHC_LIB_STATIC:BOOL=OFF \
-      -DZENOHC_CARGO_FLAGS:STRING="--locked" \
       -DBUILD_TESTING:BOOL=ON \
       -DZENOHC_BUILD_WITH_SHARED_MEMORY:BOOL=ON \
       -DZENOHC_BUILD_WITH_UNSTABLE_API:BOOL=ON \
