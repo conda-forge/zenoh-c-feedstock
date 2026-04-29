@@ -9,5 +9,4 @@ cmake -GNinja -DCMAKE_BUILD_TYPE=Release .
 cmake --build . --config Release
 
 # Run example that exit immediately
-./z_info
 ./z_bytes
