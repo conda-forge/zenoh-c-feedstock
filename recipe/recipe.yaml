@@ -1,0 +1,74 @@
+schema_version: 1
+
+context:
+  name: libzenohc
+  version: "1.10.0"
+
+package:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  - url: https://github.com/eclipse-zenoh/zenoh-c/archive/refs/tags/${{ version }}.tar.gz
+    sha256: c7bb6d90d6cbf1f612850e9bf00eaa27c47acd54247629c6de80b64e655607be
+    patches:
+      - disable_static_library_install_part1.patch
+      - disable_static_library_install_part2.patch
+
+build:
+  # Workaround for https://github.com/conda-forge/zenoh-c-feedstock/issues/37
+  number: 1
+  skip: ppc64le
+
+requirements:
+  build:
+    - ${{ compiler('rust') }}
+    - ${{ compiler('c') }}
+    - ${{ stdlib('c') }}
+    - ${{ compiler('cxx') }}
+    - cargo-bundle-licenses
+    - cmake
+    - ninja
+    - pkg-config
+  host:
+    - zenoh-rust-abi ${{ version }}.*
+  run_exports:
+    - ${{ pin_subpackage(name, upper_bound='x.x.x') }}
+
+tests:
+  - files:
+      recipe:
+        - examples_CMakeLists.txt
+      source:
+        - examples
+    requirements:
+      run:
+        - cmake-package-check
+        - ${{ compiler('c') }}
+        - ${{ compiler('cxx') }}
+    script:
+      - if: unix
+        then: test -f ${PREFIX}/lib/libzenohc${SHLIB_EXT}
+      - if: win
+        then: if not exist %PREFIX%\\Library\\lib\\zenohc.dll.lib exit 1
+      - if: win
+        then: if not exist %PREFIX%\\Library\\bin\\zenohc.dll exit 1
+      - if: unix
+        then: test ! -f ${PREFIX}/lib/libzenohc.a
+      - if: win
+        then: if exist %PREFIX%\\Library\\bin\\zenohc.lib exit 1
+      - cmake-package-check zenohc --targets zenohc::shared zenohc::lib
+
+about:
+  license: Apache-2.0 OR EPL-2.0
+  license_file:
+    - LICENSE
+    - THIRDPARTY.yml
+  summary: C API for Zenoh
+  homepage: https://github.com/eclipse-zenoh/zenoh-c
+
+extra:
+  # Stick to the repo name for the feedstock name
+  feedstock-name: zenoh-c
+  recipe-maintainers:
+    - traversaro
